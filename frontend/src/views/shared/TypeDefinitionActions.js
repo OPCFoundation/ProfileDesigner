@@ -196,7 +196,6 @@ function TypeDefinitionActions(props) {
                     }
                     <Dropdown.Item key="moreVert4" onClick={downloadProfile} >{renderMenuIcon("download")}Download {captionProfile}</Dropdown.Item>
                     <Dropdown.Item key="moreVert5" onClick={downloadProfileAsAASX} >{renderMenuIcon("download")}Download {captionProfile} as AASX</Dropdown.Item>
-                    <Dropdown.Item key="moreVert6" onClick={downloadProfileAsSmipJson} >{renderMenuIcon("download")}Download {captionProfile} for SMIP import (experimental)</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
             {renderDeleteConfirmation()}
