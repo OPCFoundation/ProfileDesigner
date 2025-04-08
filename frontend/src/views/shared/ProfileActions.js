@@ -189,7 +189,6 @@ function ProfileActions(props) {
                         }
                         <Dropdown.Item key="moreVert4" onClick={downloadItem} >{renderMenuIcon("download")}Download Profile</Dropdown.Item>
                         <Dropdown.Item key="moreVert5" onClick={downloadItemAsAASX} >{renderMenuIcon("download")}Download Profile as AASX</Dropdown.Item>
-                        <Dropdown.Item key="moreVert6" onClick={downloadItemAsSmipJson} >{renderMenuIcon("download")}Download Profile for SMIP import (experimental)</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
                 {renderDeleteConfirmation()}
