@@ -25,7 +25,8 @@
   </ItemGroup>
 
   <ItemGroup>
-	  <PackageReference Include="CESMII.OpcUa.NodeSetModel" Version="2.1.2" />
+	  <PackageReference Include="CESMII.OpcUa.NodeSetModel" Version="2.1.1" />
+	  <!--<ProjectReference Include="..\CESMII.OpcUa.NodeSetModel\CESMII.OpcUa.NodeSetModel.csproj" />-->
   </ItemGroup>
 
 </Project>

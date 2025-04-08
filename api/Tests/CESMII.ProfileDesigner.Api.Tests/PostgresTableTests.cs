@@ -46,15 +46,7 @@ namespace CESMII.ProfileDesigner.Api.Tests
             NpgsqlConnection conn = new NpgsqlConnection(connectionStringProfileDesigner);
             try
             {
-                try
-                {
-                    conn.Open();
-                }
-                catch (Exception ex)
-                {
-                    output.WriteLine($"Error opening connection: {ex.Message}");
-                    Assert.True(false);
-                }
+                conn.Open();
 
                 // Define a query returning a single row result set
                 string strSql = $"SELECT COUNT(*) FROM information_schema.columns WHERE table_schema='public' AND table_name='{strTable}'";
