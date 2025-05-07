@@ -17,7 +17,6 @@
     using System.Runtime.Serialization;
     using CESMII.ProfileDesigner.DAL.Utils;
     using System.ComponentModel;
-    using Npgsql.Internal.TypeHandlers.NumericHandlers;
 
     public class ProfileTypeDefinitionDAL : TenantBasePdDAL<ProfileTypeDefinition, ProfileTypeDefinitionModel>
     {

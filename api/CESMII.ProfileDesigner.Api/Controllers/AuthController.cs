@@ -63,7 +63,7 @@
         /// </summary>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        protected async Task<(UserModel,string)> InitLocalUser()
+        protected Task<(UserModel,string)> InitLocalUser()
         {
             bool bCheckOrganization = false;
             bool bUpdateUser = false;
@@ -96,8 +96,7 @@
             }
 
             if (bErrorCondition)
-                return (null,strError);
-
+                return Task.FromResult<(UserModel, string)>((null,strError));
 
             // We didn't find user by Azure object id (oid), so let's try finding them by email address.
             if (!bFound)
@@ -187,7 +186,7 @@
             }
 
             if (bErrorCondition)
-                return (null, strError);
+                return Task.FromResult<(UserModel, string)>((null, strError));
 
             // Check organzation and update it if needed.
             if (bCheckOrganization)
@@ -229,14 +228,12 @@
             }
 
             if (bErrorCondition)
-                return (null, strError);
+                return Task.FromResult<(UserModel, string)>((null, strError));
 
             if (bUpdateUser)
                 _dalUser.UpdateAsync(um, new UserToken() { UserId = um.ID.Value }).Wait();
 
-            return (um,null);
-
+            return Task.FromResult<(UserModel, string)>((um, null));
         }
-
     }
 }

@@ -1,0 +1,49 @@
+import React, { useEffect } from 'react'
+import { Helmet } from "react-helmet"
+import { useNavigate, useParams } from 'react-router-dom';
+//import { LoadingContext } from '../components/contexts/LoadingContext';
+import { LoadingOverlayInline } from '../components/LoadingOverlay';
+import { useLoginStatus } from '../components/OnLoginHandler';
+
+import { AppSettings } from '../utils/appsettings'
+
+//const CLASS_NAME = "LoginSuccess";
+
+function LoginSuccess() {
+
+   const navigate = useNavigate();
+   const { returnUrl } = useParams();
+   //const { loadingProps, setLoadingProps } = React.useContext(LoadingContext);
+   const { isAuthenticated, isAuthorized } = useLoginStatus(null, null /*[AppSettings.AADUserRole]*/);
+
+   //-------------------------------------------------------------------
+   // Region: hooks
+   //-------------------------------------------------------------------
+   useEffect(() => {
+
+      //check for logged in status - redirect to home page if already logged in.
+      if (isAuthenticated && isAuthorized) {
+         navigate(returnUrl ? decodeURIComponent(returnUrl) : '/');
+      }
+
+   }, [isAuthenticated, isAuthorized, navigate, returnUrl]);
+
+   //-------------------------------------------------------------------
+   // Region: hooks
+   //-------------------------------------------------------------------
+   //useLoginSilent();
+
+   //-------------------------------------------------------------------
+   // Region: Render final output
+   //-------------------------------------------------------------------
+   return (
+      <>
+         <Helmet>
+            <title>{`${AppSettings.Titles.Main} | Login`}</title>
+         </Helmet>
+         <LoadingOverlayInline msg="logging in..." show={true} />
+      </>
+   )
+}
+
+export default LoginSuccess;

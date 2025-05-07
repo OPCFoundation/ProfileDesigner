@@ -528,10 +528,5 @@ namespace CESMII.ProfileDesigner.Api.Controllers
         public ImportException(string message, Exception innerException) : base(message, innerException)
         {
         }
-
-        protected ImportException(SerializationInfo info, StreamingContext context) : base(info, context)
-        {
-        }
     }
-
 }

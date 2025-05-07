@@ -110,7 +110,7 @@ namespace CESMII.ProfileDesigner.Opc.Ua.NodeSetDBCache
                     UANodeSet nodeSet = UANodeSet.Read(nodeSetStream);
                     foreach (var ns in nodeSet.Models)
                     {
-                        added |= results.AddModelAndDependencies(nodeSet, ns, null, false).Added;
+                        added |= results.AddModelAndDependencies(nodeSet, null, ns, null, false).Added;
                         foreach (var model in results.Models)
                         {
                             if (model.NameVersion.CCacheId == null)
@@ -270,7 +270,7 @@ namespace CESMII.ProfileDesigner.Opc.Ua.NodeSetDBCache
                     // Defer the updates to the import transaction
                     WasNewSet = true;
                 }
-                var addModelResult = results.AddModelAndDependencies(nodeSet, ns, null, WasNewSet);
+                var addModelResult = results.AddModelAndDependencies(nodeSet, null, ns, null, WasNewSet);
                 var tModel = addModelResult.Model;
                 tModel.RequestedForThisImport = requested;
                 if (tModel?.NameVersion != null && myModel != null)

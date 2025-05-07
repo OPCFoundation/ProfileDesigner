@@ -48,6 +48,7 @@ namespace CESMII.ProfileDesigner.Api
         {
             var connectionStringProfileDesigner = Configuration.GetConnectionString("ProfileDesignerDB");
             //PostgreSql context
+
 #if DEBUG
             services.AddDbContext<ProfileDesignerPgContext>(options =>
                     options.UseNpgsql(connectionStringProfileDesigner)

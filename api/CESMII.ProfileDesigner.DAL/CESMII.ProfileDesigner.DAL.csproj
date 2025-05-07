@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <Configurations>Debug;Release;Staging</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NLog" Version="4.7.10" />
+    <PackageReference Include="NLog" Version="5.4.0" />
   </ItemGroup>
 
   <ItemGroup>

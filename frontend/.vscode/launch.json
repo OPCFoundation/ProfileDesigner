@@ -1,33 +1,18 @@
 {
   "version": "0.2.0",
   "configurations": [
-    // Use this with VS code
-    //{
-    //  "name": "Launch via NPM",
-    //  "request": "launch",
-    //  "runtimeArgs": [
-    //    "start",
-    //    "run-script",
-    //    "debug"
-    //  ],
-    //  "runtimeExecutable": "npm",
-    //  "skipFiles": [
-    //    "<node_internals>/**"
-    //  ],
-    //  "type": "pwa-node"
-    //},
-    {
-      "type": "chrome",
-      "request": "launch",
-      "name": "localhost (Chrome)",
-      "url": "http://localhost:3001",
-      "webRoot": "${workspaceFolder}"
-    },
     {
       "type": "edge",
       "request": "launch",
       "name": "localhost (Edge)",
-      "url": "http://localhost:3001",
+      "url": "http://localhost:53310",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "localhost (Chrome)",
+      "url": "http://localhost:53310",
       "webRoot": "${workspaceFolder}"
     }
   ]
