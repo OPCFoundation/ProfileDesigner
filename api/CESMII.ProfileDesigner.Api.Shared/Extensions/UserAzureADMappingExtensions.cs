@@ -32,22 +32,32 @@
             {
                 var u = GetAppUser(context.User, logger, dalUser);
 
+                var permission = EnumUtils.GetEnumDescription(PermissionEnum.UserAzureADMapped);
+                List<Claim> claims;
+
                 if (u != null)
                 {
-                    var permission = EnumUtils.GetEnumDescription(PermissionEnum.UserAzureADMapped);
-                    string strOrg = (u.Organization == null) ? "" : 
-                                    (u.Organization.Name == null) ? "" : 
+                    string strOrg = (u.Organization == null) ? "" :
+                                    (u.Organization.Name == null) ? "" :
                                     u.Organization.Name.ToString();
 
-                    var claims = new List<Claim>()
+                    claims = new List<Claim>()
                     {
                         new Claim($"{permission}", u.ID.Value.ToString()),  // key = UserAzureADMapped
                         new Claim($"{permission}_org", strOrg)              // key = UserAzureADMapped_org
                     };
-
-                    var appIdentity = new ClaimsIdentity(claims);
-                    context.User.AddIdentity(appIdentity);
                 }
+                else
+                {
+                    claims = new List<Claim>()
+                    {
+                        new Claim($"{permission}", "0"), // key = UserAzureADMapped
+                        new Claim($"{permission}_org", "anonymous") // key = UserAzureADMapped_org
+                    };
+                }
+
+                var appIdentity = new ClaimsIdentity(claims);
+                context.User.AddIdentity(appIdentity);
             }
 
             await _next(context);

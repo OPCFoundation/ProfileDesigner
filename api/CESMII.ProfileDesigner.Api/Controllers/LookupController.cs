@@ -18,7 +18,8 @@ using CESMII.ProfileDesigner.DAL.Utils;
 
 namespace CESMII.ProfileDesigner.Api.Controllers
 {
-    [Authorize(Policy = nameof(PermissionEnum.UserAzureADMapped)), Route("api/[controller]")]
+    [Route("api/[controller]")]
+    [Authorize(Policy = nameof(PermissionEnum.UserAzureADMapped))]
     public class LookupController : BaseController<LookupController>
     {
         private readonly IDal<LookupItem, LookupItemModel> _dal;
