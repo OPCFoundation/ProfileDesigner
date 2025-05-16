@@ -34,17 +34,8 @@ function WizardRoute({ element: Element, ...rest }) {
 
    return (
       (isAuthenticated && isAuthorized) ?
-      (<WizardLayout><Element /></WizardLayout>) :
+      (<WizardLayout>{Element}</WizardLayout>) :
       (<Navigate to={redirectUrl} replace state={{ from: location }} />)
-      //<Routes>
-      //   <Route
-      //      {...rest}
-      //      element={isAuthenticated && isAuthorized ?
-      //         (<WizardLayout><Element /></WizardLayout>) :
-      //         (<Navigate to={redirectUrl} replace state={{ from: location }} />)
-      //      }
-      //   />
-      //</Routes>
    );
 }
 

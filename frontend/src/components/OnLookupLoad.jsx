@@ -51,7 +51,8 @@ export const OnLookupLoad = () => {
                 }
             }).catch(e => {
                 setLoadingProps({ refreshLookupData: false });
-                if (e.response && e.response.status === 401) {
+               if (e.response && e.response.status === 401) {
+                  return;
                 }
                 else {
                     console.log(generateLogMessageString('useEffect||fetchLookupData||' + JSON.stringify(e), CLASS_NAME, 'error'));
@@ -248,7 +249,7 @@ export const OnLookupLoad = () => {
             await axiosInstance.get(url).then(result => {
                 if (result.status === 200) {
                     //convert the data into a format for the sideMenuLinkList
-                    const favoritesListLocal = result.data.data.map(p => {
+                    const favoritesListLocal = result.data.data?.map(p => {
                         return { url: `/type/${p.id}`, caption: p.name, iconName: getTypeDefIconName(p), authorId: p.author?.objectIdAAD };
                     });
 
@@ -266,6 +267,7 @@ export const OnLookupLoad = () => {
             }).catch(e => {
                 setLoadingProps({refreshFavoritesList: false});
                 if (e.response && e.response.status === 401) {
+                  return;
                 }
                 else {
                     console.log(generateLogMessageString('useEffect||fetchFavorites||' + JSON.stringify(e), CLASS_NAME, 'error'));

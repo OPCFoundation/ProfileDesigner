@@ -22,20 +22,13 @@ const PrivateLayout = ({ children }) => (
    </div>
 );
 
-function PrivateRoute({ component: Component, ...rest }) {
+function PrivateRoute({ element: Element, ...rest }) {
    const location = useLocation();
    const { isAuthenticated, isAuthorized, redirectUrl } = useLoginStatus(rest.location, rest.roles);
-
    return (
-      <Routes>
-         <Route
-            {...rest}
-            render={props => isAuthenticated && isAuthorized ?
-               (<PrivateLayout><Component {...props} /></PrivateLayout>) :
-               (<Navigate to={redirectUrl} replace state={{ from: location }} />)
-            }
-         />
-      </Routes>
+      (isAuthenticated && isAuthorized) ?
+         (<PrivateLayout>{Element}</PrivateLayout>) :
+         (<Navigate to={redirectUrl} replace state={{ from: location }} />)
    );
 }
 

@@ -26,17 +26,9 @@ export const SimpleFixedLayout = ({ children }) => (
    </div>
 );
 
-export function PublicRoute({ component: Component, ...rest }) {
-
+export function PublicRoute({ element: Element, ...rest }) {
    return (
-      <Routes>
-         <Route
-            {...rest}
-            render={props =>
-               (<SimpleLayout><Component {...props} /></SimpleLayout>)
-            }
-         />
-      </Routes>
+      <SimpleLayout>{Element}</SimpleLayout>
    );
 }
 
@@ -45,14 +37,6 @@ export function PublicFixedRoute({ element: Element, ...rest }) {
 
    return (
       <SimpleFixedLayout>{Element}</SimpleFixedLayout>
-      //<Routes>
-      //   <Route
-      //      {...rest}
-      //      element={
-      //         <SimpleFixedLayout>{Element}</SimpleFixedLayout>
-      //      }
-      //   />
-      //</Routes>
    );
 }
 

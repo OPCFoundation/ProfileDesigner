@@ -18,19 +18,12 @@ const AdminLayout = ({ children }) => (
    </div>
 );
 
-export function AdminRoute({ component: Component, ...rest }) {
-   const location = useLocation(); 
+export function AdminRoute({ element: Element, ...rest }) {
+   const location = useLocation();
    const { isAuthenticated, isAuthorized, redirectUrl } = useLoginStatus(rest.location, rest.roles);
-
    return (
-      <Routes>
-         <Route
-            {...rest}
-            render={props => isAuthenticated && isAuthorized ?
-               (<AdminLayout><Component {...props} /></AdminLayout>) :
-               (<Navigate to={redirectUrl} replace state={{ from: location }} />)
-            }
-         />
-      </Routes>
+      (isAuthenticated && isAuthorized) ?
+         (<AdminLayout>{Element}</AdminLayout>) :
+         (<Navigate to={redirectUrl} replace state={{ from: location }} />)
    );
 }

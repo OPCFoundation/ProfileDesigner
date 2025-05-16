@@ -19,7 +19,7 @@ const _isFirefox = _firefox > 0; // Only needed if you need to support the redir
 /// Global constants - purely static settings that remain unchanged during the lifecycle
 ///--------------------------------------------------------------------------
 export const AppSettings = {
-   BASE_API_URL: import.meta.env.REACT_APP_BASE_API_URL  // api server url - environment specific
+   BASE_API_URL: import.meta.env.VITE_BASE_API_URL  // api server url - environment specific
    , Titles: { Anonymous: 'CESMII | SM Profile Designer', Main: 'CESMII | SM Profile Designer', Caption: 'SM Profile™ Designer' }
    , PageSize: 25
    , PageSizeOptions: [5, 10, 25, 50, 100]
